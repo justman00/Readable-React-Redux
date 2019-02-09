@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducers";
 import thunkMiddleware from "redux-thunk";
-import { loadPosts } from "./actions";
+import { loadPosts, loadCategories } from "./actions";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
@@ -13,7 +13,8 @@ const store = createStore(
   composeEnhancers(applyMiddleware(thunkMiddleware))
 );
 
-store.dispatch(loadPosts("posts"));
+store.dispatch(loadPosts());
+store.dispatch(loadCategories());
 
 ReactDOM.render(
   <Provider store={store}>
