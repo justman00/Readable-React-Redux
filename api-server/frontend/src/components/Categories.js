@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import "./App.css";
 import Category from "./Category";
 
 class Categories extends React.Component {
   render() {
-    console.log(this.props.categories);
+    // console.log(this.props.categories);
     if (this.props.categories) {
       return (
         <div className="container">

@@ -1,6 +1,10 @@
 import { combineReducers } from "redux";
 
-import { GET_ALL_POSTS, GET_ALL_CATEGORIES } from "../actions";
+import {
+  GET_ALL_POSTS,
+  GET_ALL_CATEGORIES,
+  GET_POSTS_PER_CATEGORY
+} from "../actions";
 
 // loads all of the posts from the server
 function posts(state = {}, action) {
@@ -28,7 +32,21 @@ function categories(state = {}, action) {
   }
 }
 
+// initiates a category and assignes the respective articles to it
+function postsPerCategory(state = {}, { category, payload, type }) {
+  switch (type) {
+    case GET_POSTS_PER_CATEGORY:
+      return {
+        ...state,
+        [category]: [...payload]
+      };
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   posts,
-  categories
+  categories,
+  postsPerCategory
 });
