@@ -57,17 +57,17 @@ export function fetchPostsPerCategory(category) {
       .then(res => dispatch(getPostsPerCategory(res.data, category)));
 }
 
-axios
-  .post(
-    `http://localhost:3001/posts`,
-    {
-      id: "sdbfiuyebrufbueis",
-      timestamp: Date.now(),
-      title: "Udacity ain't that good",
-      body: "Cause of multiple reasons",
-      author: "Vlad",
-      category: "udacity"
-    },
-    headers
-  )
-  .then(res => console.log(res.data));
+// axios
+//   .post(
+//     `http://localhost:3001/posts`,
+//     {
+//       id: "sdbfiuyebrufbueis",
+//       timestamp: Date.now(),
+//       title: "Udacity ain't that good",
+//       body: "Cause of multiple reasons",
+//       author: "Vlad",
+//       category: "udacity"
+//     },
+//     headers
+//   )
+//   .then(res => console.log(res.data));

@@ -12,9 +12,9 @@ const store = createStore(
   reducer,
   composeEnhancers(applyMiddleware(thunkMiddleware))
 );
-
 store.dispatch(loadPosts());
 store.dispatch(loadCategories());
+// console.log(store.getState());
 store.dispatch(fetchPostsPerCategory("react"));
 store.dispatch(fetchPostsPerCategory("udacity"));
 store.dispatch(fetchPostsPerCategory("redux"));

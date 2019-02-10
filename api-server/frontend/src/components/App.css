@@ -1,14 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 62.5%;
+}
+
 .container {
   max-width: 1000px;
   margin: 0 auto;
   border: 2px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  min-height: 1000px;
 }
 
 .category {
   width: 100%;
-  margin-top: 5%;
+  margin-top: 2%;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.cards {
+  width: 100%;
+  margin-top: 2%;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
 
 .category h1 {
   margin-left: 5%;
+  font-size: 3rem;
+}
+
+.card {
+  width: 20%;
+  height: 250px;
+  border: 1px solid red;
 }
