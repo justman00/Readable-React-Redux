@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Route } from "react-router-dom";
 
 import "./App.css";
 import PostCard from "./PostCard";
@@ -7,7 +8,7 @@ import PostCard from "./PostCard";
 const Category = props => {
   return (
     <section className="category">
-      <h1>{props.category}</h1>
+      <h1>{props.category.toUpperCase()}</h1>
       <div className="cards">
         {props.posts.map(post => (
           <PostCard key={post.id} post={post} />

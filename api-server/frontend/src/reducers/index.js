@@ -3,7 +3,8 @@ import { combineReducers } from "redux";
 import {
   GET_ALL_POSTS,
   GET_ALL_CATEGORIES,
-  GET_POSTS_PER_CATEGORY
+  GET_POSTS_PER_CATEGORY,
+  SELECTED_POST
 } from "../actions";
 
 // loads all of the posts from the server
@@ -45,8 +46,21 @@ function postsPerCategory(state = {}, { category, payload, type }) {
   }
 }
 
+function selectedPost(state = {}, { payload, type }) {
+  switch (type) {
+    case SELECTED_POST:
+      return {
+        ...state,
+        ...payload
+      };
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   posts,
   categories,
-  postsPerCategory
+  postsPerCategory,
+  selectedPost
 });

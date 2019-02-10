@@ -4,6 +4,7 @@ import axios from "axios";
 export const GET_ALL_POSTS = "GET_ALL_POSTS";
 export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
 export const GET_POSTS_PER_CATEGORY = "GET_POSTS_PER_CATEGORY";
+export const SELECTED_POST = "SELECTED_POST";
 
 function getPosts(payload) {
   return {
@@ -24,6 +25,13 @@ function getPostsPerCategory(payload, cat) {
     type: GET_POSTS_PER_CATEGORY,
     payload,
     category: cat
+  };
+}
+
+function selectedPost(payload) {
+  return {
+    type: SELECTED_POST,
+    payload
   };
 }
 
@@ -56,6 +64,13 @@ export function fetchPostsPerCategory(category) {
       .get(`http://localhost:3001/${category}/posts`, headers)
       .then(res => dispatch(getPostsPerCategory(res.data, category)));
 }
+
+//places a selected post in the redux store, will update its value each time another one is clicked
+export const selectPost = id => dispatch =>
+  axios
+    .get(`http://localhost:3001/posts/${id}`, headers)
+    .then(res => dispatch(selectedPost(res.data)))
+    .then(res => console.log("success"));
 
 // axios
 //   .post(
