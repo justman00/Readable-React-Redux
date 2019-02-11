@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { selectPost } from "../actions";
 import { connect } from "react-redux";
 
@@ -17,10 +17,10 @@ const PostCard = props => {
         <div className="card-footer">
           <Link
             onClick={e => {
-              e.preventDefault();
+              //   e.preventDefault();
               props.clickPost(props.post.id);
             }}
-            to={`/${props.post.id}/details`}
+            to={`/detail`}
           >
             Find more
           </Link>
@@ -37,11 +37,16 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const mapStateToProps = store => ({
+  selectedPost:
+    Object.keys(store.selectedPost).length !== 0 ? store.selectedPost : null
+});
+
 PostCard.propTypes = {
   post: PropTypes.object
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(PostCard);

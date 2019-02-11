@@ -176,7 +176,7 @@ body {
 }
 
 .card-card {
-  height: 200px;
+  height: 250px;
   padding: 1%;
   /* border: 1px solid red; */
   width: 100%;
@@ -206,7 +206,7 @@ body {
 
 .card-body {
   font-size: 1.6rem;
-  max-height: 100px;
+  max-height: 148px;
   line-height: 1.25;
   margin: 5% 0;
   overflow: hidden;

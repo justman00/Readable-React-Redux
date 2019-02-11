@@ -21,11 +21,11 @@ store.dispatch(fetchPostsPerCategory("udacity"));
 store.dispatch(fetchPostsPerCategory("redux"));
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
+  <BrowserRouter>
+    <Provider store={store}>
       <App />
-    </BrowserRouter>
-  </Provider>,
+    </Provider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
 

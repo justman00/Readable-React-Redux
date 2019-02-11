@@ -5,6 +5,7 @@ export const GET_ALL_POSTS = "GET_ALL_POSTS";
 export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
 export const GET_POSTS_PER_CATEGORY = "GET_POSTS_PER_CATEGORY";
 export const SELECTED_POST = "SELECTED_POST";
+export const SUBMIT_POST = "SUBMIT_POST";
 
 function getPosts(payload) {
   return {
@@ -32,6 +33,12 @@ function selectedPost(payload) {
   return {
     type: SELECTED_POST,
     payload
+  };
+}
+
+function postPost() {
+  return {
+    type: SUBMIT_POST
   };
 }
 
@@ -72,17 +79,17 @@ export const selectPost = id => dispatch =>
     .then(res => dispatch(selectedPost(res.data)))
     .then(res => console.log("success"));
 
-// axios
-//   .post(
-//     `http://localhost:3001/posts`,
-//     {
-//       id: "sdbfiuyebrufbueis",
-//       timestamp: Date.now(),
-//       title: "Udacity ain't that good",
-//       body: "Cause of multiple reasons",
-//       author: "Vlad",
-//       category: "udacity"
-//     },
-//     headers
-//   )
-//   .then(res => console.log(res.data));
+// api call that posts an article to the backend => to be used in the form component
+export const submitPost = ({ id, timestamp, title, body, author, category }) =>
+  axios.post(
+    "http://localhost:3001/posts",
+    {
+      id,
+      timestamp,
+      title,
+      body,
+      author,
+      category
+    },
+    headers
+  );
