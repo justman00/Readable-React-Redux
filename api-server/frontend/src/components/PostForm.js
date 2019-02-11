@@ -5,40 +5,72 @@ import { submitPost } from "../actions";
 import moment from "moment";
 import uuid from "uuid";
 
+import "./PostComponent.scss";
+
 console.log(yup);
 
 function PostForm({ values, errors, touched, isSubmitting, handleChange }) {
   return (
-    <Form>
-      <div>
-        {touched.title && errors.title && <p>{errors.title}</p>}
-        <Field type="text" name="title" placeholder="Your title here" />
-      </div>
+    <div className="container-form">
+      <h1>Post an Article</h1>
+      <Form>
+        <div className="inputs">
+          <div className="title">
+            {touched.title && errors.title && <p>{errors.title}</p>}
+            <Field type="text" name="title" placeholder="Your title here" />
+          </div>
 
-      <div>
-        {touched.author && errors.author && <p>{errors.author}</p>}
-        <Field type="text" name="author" placeholder="Author" />
-      </div>
+          <div className="author">
+            {touched.author && errors.author && <p>{errors.author}</p>}
+            <Field type="text" name="author" placeholder="Author" />
+          </div>
+        </div>
 
-      <div>
-        {touched.body && errors.body && <p>{errors.body}</p>}
-        <textarea
-          onChange={handleChange}
-          value={values.body}
-          name="body"
-          cols="30"
-          rows="10"
-          placeholder="Your article goes here"
-        />
-      </div>
+        <div className="main-text">
+          <div className="body">
+            {touched.body && errors.body && <p>{errors.body}</p>}
+            <textarea
+              onChange={handleChange}
+              value={values.body}
+              name="body"
+              cols="30"
+              rows="14"
+              placeholder="Your article goes here"
+            />
+          </div>
+          <div className="instructions">
+            <h3>Instructions:</h3>
+            <ul type="disc">
+              <li>
+                The content of the entire article should exceed 200 characters
+              </li>
+              <li>
+                The text should not have insulting words or references to other
+                types of bad behaviour
+              </li>
+              <li>
+                You are free to let go your imagination and shock all of us with
+                the very best content of yours
+              </li>
+              <li>Plagiarism can get punished by law.</li>
+            </ul>
+          </div>
+        </div>
 
-      <Field component="select" name="category">
-        <option value="react">React</option>
-        <option value="redux">Redux</option>
-        <option value="udacity">Udacity</option>
-      </Field>
-      <button>Submit</button>
-    </Form>
+        <div className="select-submit">
+          <div className="select-dropdown">
+            <label htmlFor="category">Select a category: </label>
+            <Field component="select" name="category">
+              <option value="react">React</option>
+              <option value="redux">Redux</option>
+              <option value="udacity">Udacity</option>
+            </Field>
+          </div>
+
+          <button>Submit</button>
+        </div>
+      </Form>
+    </div>
   );
 }
 
