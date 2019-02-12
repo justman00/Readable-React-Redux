@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { editPost } from "../actions";
+import { Redirect } from "react-router-dom";
 
 export default class EditFormSubcomponent extends Component {
   constructor(props) {
@@ -17,9 +19,17 @@ export default class EditFormSubcomponent extends Component {
       [e.target.name]: e.target.value
     });
   };
+
+  onSubmit = e => {
+    e.preventDefault();
+    editPost(this.props.id, this.state.input, this.state.textarea).then(() =>
+      this.props.history.push("/")
+    );
+  };
+
   render() {
     return (
-      <div>
+      <form onSubmit={e => this.onSubmit(e)}>
         <input
           type="text"
           name="input"
@@ -33,7 +43,8 @@ export default class EditFormSubcomponent extends Component {
           value={this.state.textarea}
           onChange={this.handleChange}
         />
-      </div>
+        <button type="submit">Submit</button>
+      </form>
     );
   }
 }

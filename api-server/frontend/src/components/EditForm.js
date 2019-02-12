@@ -12,8 +12,10 @@ class EditForm extends Component {
           <div className="edit-form">
             <h1>Edit your post</h1>
             <EditFormSubcomponent
+              id={this.props.post.id}
               input={this.props.post.title}
               textarea={this.props.post.body}
+              history={this.props.history}
             />
           </div>
         ) : (
