@@ -1,11 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { deletePost, ratePost, selectPost } from "../actions";
+import { Link } from "react-router-dom";
 
 import Loading from "./Loading.js";
 import "./SinglePost.scss";
 
 const SinglePost = props => {
+  console.log(props);
   return (
     <div className="container">
       {props.post !== null ? (
@@ -51,7 +53,9 @@ const SinglePost = props => {
               >
                 Delete
               </button>
-              <button className="edit-btn">Edit</button>
+              <Link to="/edit">
+                <button className="edit-btn">Edit</button>
+              </Link>
             </div>
           </main>
         </article>

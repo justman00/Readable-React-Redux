@@ -101,3 +101,7 @@ export const deletePost = id =>
 // make the score of an item go up or down
 export const ratePost = (id, rate) =>
   axios.post(`http://localhost:3001/posts/${id}`, { option: rate }, headers);
+
+// edit a post
+export const editPost = (id, title, body) =>
+  axios.put(`http://localhost:3001/posts/${id}`, { title, body }, headers);

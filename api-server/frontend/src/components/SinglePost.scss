@@ -70,3 +70,44 @@ main {
     // margin-left: 75%;
   }
 }
+
+.delete-edit {
+  // margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+
+  button {
+    font-size: 2.4rem;
+    letter-spacing: 5px;
+    margin-top: 25%;
+    outline: none;
+    border-radius: 15px;
+    padding: 10px 20px;
+    text-align: center;
+    background: #fff;
+    border: 2px solid black;
+  }
+
+  .delete-btn {
+    border-color: firebrick;
+    color: firebrick;
+    &:hover {
+      color: #fff;
+      background: firebrick;
+      transform: scale(1.15);
+      transition: all 0.5s;
+    }
+  }
+
+  .edit-btn {
+    border-color: darkorange;
+    color: darkorange;
+    &:hover {
+      color: #fff;
+      background: darkorange;
+      transform: scale(1.15);
+      transition: all 0.5s;
+    }
+  }
+}
