@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { deletePost } from "../actions";
+import { deletePost, ratePost, selectPost } from "../actions";
 
 import Loading from "./Loading.js";
-import "./SinglePost.css";
+import "./SinglePost.scss";
 
 const SinglePost = props => {
   return (
@@ -21,7 +21,26 @@ const SinglePost = props => {
             <p className="content">{props.post.body}</p>
             <div className="footer">
               <h4>{props.post.author}</h4>
-              <i className="far fa-thumbs-up" />
+              <div className="appreciate">
+                <i
+                  className="far fa-thumbs-up"
+                  onClick={() =>
+                    ratePost(props.post.id, "upVote").then(() =>
+                      props.rerenderPost(props.post.id)
+                    )
+                  }
+                />
+                <h5>{props.post.voteScore}</h5>
+
+                <i
+                  className="far fa-thumbs-down"
+                  onClick={() =>
+                    ratePost(props.post.id, "downVote").then(() =>
+                      props.rerenderPost(props.post.id)
+                    )
+                  }
+                />
+              </div>
             </div>
             <div className="delete-edit">
               <button
@@ -49,4 +68,13 @@ const mapStateToProps = store => ({
   post: Object.keys(store.selectedPost).length !== 0 ? store.selectedPost : null
 });
 
-export default connect(mapStateToProps)(SinglePost);
+const mapDispatchToProps = dispatch => {
+  return {
+    rerenderPost: id => dispatch(selectPost(id))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SinglePost);

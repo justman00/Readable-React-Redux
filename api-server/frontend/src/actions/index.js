@@ -97,3 +97,7 @@ export const submitPost = ({ id, timestamp, title, body, author, category }) =>
 // api call that deletes the selected post
 export const deletePost = id =>
   axios.delete(`http://localhost:3001/posts/${id}`, headers);
+
+// make the score of an item go up or down
+export const ratePost = (id, rate) =>
+  axios.post(`http://localhost:3001/posts/${id}`, { option: rate }, headers);
