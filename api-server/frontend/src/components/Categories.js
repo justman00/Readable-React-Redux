@@ -7,7 +7,8 @@ import "./App.css";
 import Category from "./Category";
 
 class Categories extends React.Component {
-  sortPosts = (arr, cat) => arr.filter(el => el.category === cat);
+  sortPosts = (arr, cat) =>
+    arr.filter(el => el.category === cat && el.deleted === false);
 
   componentDidMount() {
     this.props.initiate();

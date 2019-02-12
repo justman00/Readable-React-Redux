@@ -93,4 +93,7 @@ export const submitPost = ({ id, timestamp, title, body, author, category }) =>
     },
     headers
   );
-// .then(() => loadPosts());
+
+// api call that deletes the selected post
+export const deletePost = id =>
+  axios.delete(`http://localhost:3001/posts/${id}`, headers);

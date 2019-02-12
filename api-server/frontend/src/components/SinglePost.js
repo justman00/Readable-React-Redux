@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
+import { deletePost } from "../actions";
 
 import Loading from "./Loading.js";
 import "./SinglePost.css";
 
 const SinglePost = props => {
-  console.log(props.post);
   return (
     <div className="container">
       {props.post !== null ? (
@@ -21,7 +21,18 @@ const SinglePost = props => {
             <p className="content">{props.post.body}</p>
             <div className="footer">
               <h4>{props.post.author}</h4>
-              <i class="far fa-thumbs-up" />
+              <i className="far fa-thumbs-up" />
+            </div>
+            <div className="delete-edit">
+              <button
+                onClick={() =>
+                  deletePost(props.post.id).then(() => props.history.push("/"))
+                }
+                className="delete-btn"
+              >
+                Delete
+              </button>
+              <button className="edit-btn">Edit</button>
             </div>
           </main>
         </article>
