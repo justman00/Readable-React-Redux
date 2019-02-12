@@ -4,11 +4,11 @@ import * as yup from "yup";
 import { submitPost } from "../actions";
 import moment from "moment";
 import uuid from "uuid";
+import { Redirect } from "react-router-dom";
 
 import "./PostComponent.scss";
 
-console.log(yup);
-
+// console.log(yup);
 function PostForm({ values, errors, touched, isSubmitting, handleChange }) {
   return (
     <div className="container-form">
@@ -27,7 +27,7 @@ function PostForm({ values, errors, touched, isSubmitting, handleChange }) {
         </div>
 
         <div className="main-text">
-          <div className="body">
+          <div className="body-component">
             {touched.body && errors.body && <p>{errors.body}</p>}
             <textarea
               onChange={handleChange}
@@ -67,7 +67,7 @@ function PostForm({ values, errors, touched, isSubmitting, handleChange }) {
             </Field>
           </div>
 
-          <button>Submit</button>
+          <button type="submit">Submit</button>
         </div>
       </Form>
     </div>
@@ -89,17 +89,20 @@ export default withFormik({
     title: yup.string().required("You must enter a title"),
     author: yup.string().required("Name the writer"),
     body: yup
-      .string(200, "The content has to be of 200 characters or longer")
+      .string(200, "The content has to be longer than 200 characters")
       .required("Here must be your article")
   }),
   handleSubmit({ title, body, author, id, timestamp, category }, { props }) {
-    submitPost({
-      id,
-      timestamp,
-      title,
-      body,
-      author,
-      category
-    }).then(() => props.history.push("/"));
+    console.log(props);
+    if (body !== undefined && body.length > 200) {
+      submitPost({
+        id,
+        timestamp,
+        title,
+        body,
+        author,
+        category
+      }).then(() => props.history.push("/"));
+    }
   }
 })(PostForm);

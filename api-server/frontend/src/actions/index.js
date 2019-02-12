@@ -93,3 +93,4 @@ export const submitPost = ({ id, timestamp, title, body, author, category }) =>
     },
     headers
   );
+// .then(() => loadPosts());

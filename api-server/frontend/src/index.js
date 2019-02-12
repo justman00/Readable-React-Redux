@@ -13,7 +13,7 @@ const store = createStore(
   reducer,
   composeEnhancers(applyMiddleware(thunkMiddleware))
 );
-store.dispatch(loadPosts());
+// store.dispatch(loadPosts());
 store.dispatch(loadCategories());
 // console.log(store.getState());
 store.dispatch(fetchPostsPerCategory("react"));

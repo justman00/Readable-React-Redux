@@ -4,7 +4,8 @@ import {
   GET_ALL_POSTS,
   GET_ALL_CATEGORIES,
   GET_POSTS_PER_CATEGORY,
-  SELECTED_POST
+  SELECTED_POST,
+  SUBMIT_POST
 } from "../actions";
 
 // loads all of the posts from the server

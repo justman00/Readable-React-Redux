@@ -57,8 +57,12 @@
     align-items: center;
     margin-top: 5%;
 
-    .body {
+    .body-component {
       width: 50%;
+
+      p {
+        margin-bottom: 2%;
+      }
 
       textarea {
         resize: none;
@@ -125,6 +129,7 @@
     }
 
     button {
+      outline: none;
       font-size: 1.8rem;
       font-weight: 600;
       color: blueviolet;

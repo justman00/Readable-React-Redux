@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { loadPosts } from "../actions";
 
 import Loading from "./Loading";
 import "./App.css";
@@ -7,6 +8,10 @@ import Category from "./Category";
 
 class Categories extends React.Component {
   sortPosts = (arr, cat) => arr.filter(el => el.category === cat);
+
+  componentDidMount() {
+    this.props.initiate();
+  }
 
   render() {
     // console.log(this.props.categories);
@@ -41,4 +46,13 @@ function mapStateToProps(store) {
   };
 }
 
-export default connect(mapStateToProps)(Categories);
+function mapDispatchToProps(dispatch) {
+  return {
+    initiate: () => dispatch(loadPosts())
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Categories);
