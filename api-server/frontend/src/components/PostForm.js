@@ -4,7 +4,6 @@ import * as yup from "yup";
 import { submitPost } from "../actions";
 import moment from "moment";
 import uuid from "uuid";
-import { Redirect } from "react-router-dom";
 
 import "./PostComponent.scss";
 
@@ -89,7 +88,8 @@ export default withFormik({
     title: yup.string().required("You must enter a title"),
     author: yup.string().required("Name the writer"),
     body: yup
-      .string(200, "The content has to be longer than 200 characters")
+      .string()
+      .min(200, "The content has to be longer than 200 characters")
       .required("Here must be your article")
   }),
   handleSubmit({ title, body, author, id, timestamp, category }, { props }) {

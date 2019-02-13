@@ -1,50 +1,54 @@
 import React, { Component } from "react";
 import { editPost } from "../actions";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
+import { withFormik, Field, Form } from "formik";
+import * as yup from "yup";
 
-export default class EditFormSubcomponent extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-    this.state = {
-      input: props.input,
-      textarea: props.textarea
+const EditFormSubcomponent = ({ values, errors, touched, handleChange }) => {
+  return (
+    <Form>
+      {touched.input && errors.input && <p>{errors.input}</p>}
+      <Field type="text" name="input" value={values.input} />
+      {touched.textarea && errors.textarea && <p>{errors.textarea}</p>}
+      <textarea
+        name="textarea"
+        cols="30"
+        rows="10"
+        value={values.textarea}
+        onChange={handleChange}
+      />
+      <button type="submit">Submit</button>
+    </Form>
+  );
+};
+
+EditFormSubcomponent.propTypes = {
+  id: PropTypes.string.isRequired,
+  input: PropTypes.string.isRequired,
+  textarea: PropTypes.string.isRequired,
+  history: PropTypes.object
+};
+
+export default withFormik({
+  mapPropsToValues({ input, textarea }) {
+    return {
+      input,
+      textarea
     };
+  },
+  validationSchema: yup.object().shape({
+    input: yup.string().required("This field must not be blank"),
+    textarea: yup
+      .string()
+      .min(200, "The content has to be longer than 200 characters")
+      .required(
+        "Here must be your article and don't forget to make it longer than 200 chars!"
+      )
+  }),
+  handleSubmit({ input, textarea }, { props }) {
+    if (textarea.length > 200 && input.length > 0) {
+      editPost(props.id, input, textarea).then(() => props.history.push("/"));
+    }
   }
-
-  handleChange = e => {
-    console.log(e.target.name);
-    console.log(e.target.value);
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
-  onSubmit = e => {
-    e.preventDefault();
-    editPost(this.props.id, this.state.input, this.state.textarea).then(() =>
-      this.props.history.push("/")
-    );
-  };
-
-  render() {
-    return (
-      <form onSubmit={e => this.onSubmit(e)}>
-        <input
-          type="text"
-          name="input"
-          value={this.state.input}
-          onChange={this.handleChange}
-        />
-        <textarea
-          name="textarea"
-          cols="30"
-          rows="10"
-          value={this.state.textarea}
-          onChange={this.handleChange}
-        />
-        <button type="submit">Submit</button>
-      </form>
-    );
-  }
-}
+})(EditFormSubcomponent);
