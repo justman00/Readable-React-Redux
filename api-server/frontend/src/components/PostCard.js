@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { selectPost } from "../actions";
+import { selectPost, getComments } from "../actions";
 import { connect } from "react-redux";
 
 const PostCard = props => {
@@ -19,6 +19,7 @@ const PostCard = props => {
             onClick={e => {
               //   e.preventDefault();
               props.clickPost(props.post.id);
+              props.getAllComments(props.post.id);
             }}
             to={`/detail`}
           >
@@ -33,7 +34,8 @@ const PostCard = props => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    clickPost: id => dispatch(selectPost(id))
+    clickPost: id => dispatch(selectPost(id)),
+    getAllComments: id => dispatch(getComments(id))
   };
 };
 

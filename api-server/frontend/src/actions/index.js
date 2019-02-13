@@ -5,7 +5,7 @@ export const GET_ALL_POSTS = "GET_ALL_POSTS";
 export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
 export const GET_POSTS_PER_CATEGORY = "GET_POSTS_PER_CATEGORY";
 export const SELECTED_POST = "SELECTED_POST";
-export const SUBMIT_POST = "SUBMIT_POST";
+export const GET_COMMENTS = "GET_COMMENTS";
 
 function getPosts(payload) {
   return {
@@ -36,9 +36,10 @@ function selectedPost(payload) {
   };
 }
 
-function postPost() {
+function getAllComments(payload) {
   return {
-    type: SUBMIT_POST
+    type: GET_COMMENTS,
+    payload
   };
 }
 
@@ -105,3 +106,23 @@ export const ratePost = (id, rate) =>
 // edit a post
 export const editPost = (id, title, body) =>
   axios.put(`http://localhost:3001/posts/${id}`, { title, body }, headers);
+
+// get all of the comments
+export const getComments = id => dispatch =>
+  axios
+    .get(`http://localhost:3001/posts/${id}/comments`, headers)
+    .then(res => dispatch(getAllComments(res.data)));
+
+// api call to the data base to post a comment
+export const postComment = ({ id, timestamp, body, author, parentId }) =>
+  axios.post(
+    `http://localhost:3001/comments`,
+    {
+      id,
+      timestamp,
+      body,
+      author,
+      parentId
+    },
+    headers
+  );

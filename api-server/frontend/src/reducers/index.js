@@ -5,7 +5,7 @@ import {
   GET_ALL_CATEGORIES,
   GET_POSTS_PER_CATEGORY,
   SELECTED_POST,
-  SUBMIT_POST
+  GET_COMMENTS
 } from "../actions";
 
 // loads all of the posts from the server
@@ -53,6 +53,11 @@ function selectedPost(state = {}, { payload, type }) {
       return {
         ...state,
         ...payload
+      };
+    case GET_COMMENTS:
+      return {
+        ...state,
+        comments: [...payload]
       };
     default:
       return state;
