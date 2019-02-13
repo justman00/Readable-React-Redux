@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { deletePost, ratePost, selectPost } from "../actions";
 import { Link } from "react-router-dom";
 
+import Comments from "./comments/Comments";
 import Loading from "./Loading.js";
 import "./SinglePost.scss";
 
 const SinglePost = props => {
-  console.log(props);
   return (
     <div className="container">
       {props.post !== null ? (
@@ -58,6 +58,7 @@ const SinglePost = props => {
               </Link>
             </div>
           </main>
+          <Comments parentId={props.post.id} />
         </article>
       ) : (
         <div className="loading-icon">

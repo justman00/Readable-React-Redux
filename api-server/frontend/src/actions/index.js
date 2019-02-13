@@ -115,14 +115,16 @@ export const getComments = id => dispatch =>
 
 // api call to the data base to post a comment
 export const postComment = ({ id, timestamp, body, author, parentId }) =>
-  axios.post(
-    `http://localhost:3001/comments`,
-    {
-      id,
-      timestamp,
-      body,
-      author,
-      parentId
-    },
-    headers
-  );
+  axios
+    .post(
+      `http://localhost:3001/comments`,
+      {
+        id,
+        timestamp,
+        body,
+        author,
+        parentId
+      },
+      headers
+    )
+    .then(() => getComments(parentId));
