@@ -2,30 +2,63 @@ import React from "react";
 import { connect } from "react-redux";
 import "./Comment.scss";
 import Comment from "./Comment";
+import PropTypes from "prop-types";
 import CommentForm from "./CommentForm";
+import { getComments } from "../../actions";
 
-const Comments = props => {
-  return (
-    <div>
-      {props.comments.length > 0 ? (
-        <div className="comments">
-          {props.comments.map(comment => (
-            <Comment key={comment.id} comment={comment} />
-          ))}
-          <CommentForm parentId={props.parentId} />
-        </div>
-      ) : (
-        <div>
-          <h2>No Comments for this post yet</h2>
-          <CommentForm parentId={props.parentId} />
-        </div>
-      )}
-    </div>
-  );
-};
+class Comments extends React.Component {
+  state = {
+    render: false
+  };
+  rerender = () => {
+    this.props.rerenderComments(this.props.parentId);
+    this.setState({ render: !this.state.render });
+  };
+
+  render() {
+    console.log(this.props.selectedId);
+    return (
+      <div>
+        {this.props.comments.length > 0 ? (
+          <div className="comments">
+            {this.props.comments.map(comment => (
+              <Comment key={comment.id} comment={comment} />
+            ))}
+            <CommentForm
+              rerender={this.rerender}
+              parentId={this.props.selectedId}
+            />
+          </div>
+        ) : (
+          <div>
+            <h2>No Comments for this post yet</h2>
+            <CommentForm
+              rerender={this.rerender}
+              parentId={this.props.parentId}
+            />
+          </div>
+        )}
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = store => ({
-  comments: store.selectedPost.comments ? store.selectedPost.comments : []
+  comments: store.selectedPost.comments ? store.selectedPost.comments : [],
+  selectedId: store.selectedPost.id
 });
 
-export default connect(mapStateToProps)(Comments);
+const mapDispatchToProps = dispatch => {
+  return {
+    rerenderComments: id => dispatch(getComments(id))
+  };
+};
+
+Comments.propTypes = {
+  parentId: PropTypes.string.isRequired
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Comments);

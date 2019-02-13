@@ -6,6 +6,7 @@ export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
 export const GET_POSTS_PER_CATEGORY = "GET_POSTS_PER_CATEGORY";
 export const SELECTED_POST = "SELECTED_POST";
 export const GET_COMMENTS = "GET_COMMENTS";
+export const ADD_COMMENT = "ADD_COMMENT";
 
 function getPosts(payload) {
   return {
@@ -39,6 +40,13 @@ function selectedPost(payload) {
 function getAllComments(payload) {
   return {
     type: GET_COMMENTS,
+    payload
+  };
+}
+
+function addComment(payload) {
+  return {
+    type: ADD_COMMENT,
     payload
   };
 }
@@ -109,22 +117,21 @@ export const editPost = (id, title, body) =>
 
 // get all of the comments
 export const getComments = id => dispatch =>
-  axios
-    .get(`http://localhost:3001/posts/${id}/comments`, headers)
-    .then(res => dispatch(getAllComments(res.data)));
+  axios.get(`http://localhost:3001/posts/${id}/comments`, headers).then(res => {
+    dispatch(getAllComments(res.data));
+    console.log(res.data);
+  });
 
 // api call to the data base to post a comment
 export const postComment = ({ id, timestamp, body, author, parentId }) =>
-  axios
-    .post(
-      `http://localhost:3001/comments`,
-      {
-        id,
-        timestamp,
-        body,
-        author,
-        parentId
-      },
-      headers
-    )
-    .then(() => getComments(parentId));
+  axios.post(
+    `http://localhost:3001/comments`,
+    {
+      id,
+      timestamp,
+      body,
+      author,
+      parentId
+    },
+    headers
+  );
