@@ -4,7 +4,7 @@ import moment from "moment";
 import uuid from "uuid";
 import { postComment, getComments } from "../../actions";
 import * as yup from "yup";
-// import { connect } from "react-redux";
+import "./Comment.scss";
 
 class CommentForm extends React.Component {
   render() {
@@ -44,7 +44,12 @@ export default withFormik({
       parentId: props.parentId
     }).then(() => {
       props.rerender();
-      resetForm({ author: "", body: "", id: uuid() });
+      resetForm({
+        author: "",
+        body: "",
+        id: uuid(),
+        timestamp: moment().format("D MMMM YYYY")
+      });
     });
   }
 })(CommentForm);

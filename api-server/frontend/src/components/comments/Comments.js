@@ -16,7 +16,6 @@ class Comments extends React.Component {
   };
 
   render() {
-    console.log(this.props.selectedId);
     return (
       <div>
         {this.props.comments.length > 0 ? (
