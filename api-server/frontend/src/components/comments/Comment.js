@@ -1,9 +1,10 @@
 import React from "react";
 import "./Comment.scss";
 import PropTypes from "prop-types";
-import CommentForm from "./CommentForm";
+import { deleteComment, rateComment } from "../../actions";
+import Like from "../../utils/Like";
 
-const Comment = ({ comment, parentId }) => {
+const Comment = ({ comment, id, rerender, voteScore }) => {
   return (
     <div className="comment-container">
       <header>
@@ -11,6 +12,19 @@ const Comment = ({ comment, parentId }) => {
         <h3>{comment.timestamp}</h3>
       </header>
       <p className="comment-body">{comment.body}</p>
+      <button
+        onClick={() => {
+          deleteComment(id).then(() => rerender());
+        }}
+      >
+        Delete
+      </button>
+      <Like
+        id={id}
+        rerender={rerender}
+        rate={rateComment}
+        voteScore={voteScore}
+      />
     </div>
   );
 };

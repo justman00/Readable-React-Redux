@@ -10,7 +10,7 @@ class Comments extends React.Component {
   state = {
     render: false
   };
-  rerender = () => {
+  rerender = foobar => {
     this.props.rerenderComments(this.props.parentId);
     this.setState({ render: !this.state.render });
   };
@@ -22,7 +22,13 @@ class Comments extends React.Component {
         {this.props.comments.length > 0 ? (
           <div className="comments">
             {this.props.comments.map(comment => (
-              <Comment key={comment.id} comment={comment} />
+              <Comment
+                voteScore={comment.voteScore}
+                id={comment.id}
+                rerender={this.rerender}
+                key={comment.id}
+                comment={comment}
+              />
             ))}
             <CommentForm
               rerender={this.rerender}

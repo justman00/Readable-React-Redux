@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { deletePost, ratePost, selectPost } from "../actions";
+import { deletePost, selectPost, ratePost } from "../actions";
 import { Link } from "react-router-dom";
+import Like from "../utils/Like";
 
 import Comments from "./comments/Comments";
 import Loading from "./Loading.js";
@@ -23,26 +24,12 @@ const SinglePost = props => {
             <p className="content">{props.post.body}</p>
             <div className="footer">
               <h4>{props.post.author}</h4>
-              <div className="appreciate">
-                <i
-                  className="far fa-thumbs-up"
-                  onClick={() =>
-                    ratePost(props.post.id, "upVote").then(() =>
-                      props.rerenderPost(props.post.id)
-                    )
-                  }
-                />
-                <h5>{props.post.voteScore}</h5>
-
-                <i
-                  className="far fa-thumbs-down"
-                  onClick={() =>
-                    ratePost(props.post.id, "downVote").then(() =>
-                      props.rerenderPost(props.post.id)
-                    )
-                  }
-                />
-              </div>
+              <Like
+                rate={ratePost}
+                id={props.post.id}
+                rerender={props.rerenderPost}
+                voteScore={props.post.voteScore}
+              />
             </div>
             <div className="delete-edit">
               <button

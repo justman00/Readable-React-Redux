@@ -135,3 +135,11 @@ export const postComment = ({ id, timestamp, body, author, parentId }) =>
     },
     headers
   );
+
+// api call to delete a comment
+export const deleteComment = id =>
+  axios.delete(`http://localhost:3001/comments/${id}`, headers);
+
+// rate a comment
+export const rateComment = (id, rate) =>
+  axios.post(`http://localhost:3001/comments/${id}`, { option: rate }, headers);
