@@ -4,7 +4,7 @@ import "./Navbar.scss";
 
 export default function Navbar() {
   return (
-    <header class="header">
+    <header className="header">
       <nav>
         <div className="iconca">Iconca</div>
         <div className="links">

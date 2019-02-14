@@ -143,3 +143,11 @@ export const deleteComment = id =>
 // rate a comment
 export const rateComment = (id, rate) =>
   axios.post(`http://localhost:3001/comments/${id}`, { option: rate }, headers);
+
+// update a commet
+export const updateComment = (id, body, timestamp) =>
+  axios.put(
+    `http://localhost:3001/comments/${id}`,
+    { body, timestamp },
+    headers
+  );

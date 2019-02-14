@@ -2,7 +2,7 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import moment from "moment";
 import uuid from "uuid";
-import { postComment, getComments } from "../../actions";
+import { postComment } from "../../actions";
 import * as yup from "yup";
 import "./Comment.scss";
 
