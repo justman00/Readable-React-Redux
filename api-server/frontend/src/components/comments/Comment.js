@@ -46,6 +46,7 @@ class Comment extends React.Component {
           Delete
         </button>
         <button
+          className={this.state.displayP}
           onClick={() =>
             this.setState({
               displayF: "block",

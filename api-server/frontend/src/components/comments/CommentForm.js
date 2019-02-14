@@ -6,17 +6,17 @@ import { postComment } from "../../actions";
 import * as yup from "yup";
 import "./Comment.scss";
 
-class CommentForm extends React.Component {
-  render() {
-    return (
-      <Form>
-        <Field type="text" placeholder="Your name" name="author" />
-        <Field type="text" placeholder="Your comment" name="body" />
-        <button type="submit">Submit</button>
-      </Form>
-    );
-  }
-}
+const CommentForm = ({ touched, errors }) => {
+  return (
+    <Form>
+      {touched.author && errors.author && <p>{errors.author}</p>}
+      <Field type="text" placeholder="Your name" name="author" />
+      {touched.body && errors.body && <p>{errors.body}</p>}
+      <Field type="text" placeholder="Your comment" name="body" />
+      <button type="submit">Submit</button>
+    </Form>
+  );
+};
 
 export default withFormik({
   mapPropsToValues({ author, body, parentId }) {
