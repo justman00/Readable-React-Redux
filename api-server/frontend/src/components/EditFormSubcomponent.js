@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import { editPost } from "../actions";
-// import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { withFormik, Field, Form } from "formik";
 import * as yup from "yup";
@@ -8,9 +7,9 @@ import * as yup from "yup";
 const EditFormSubcomponent = ({ values, errors, touched, handleChange }) => {
   return (
     <Form>
-      {touched.input && errors.input && <p>{errors.input}</p>}
       <Field type="text" name="input" value={values.input} />
-      {touched.textarea && errors.textarea && <p>{errors.textarea}</p>}
+      {touched.input && errors.input && <p>{errors.input}</p>}
+
       <textarea
         name="textarea"
         cols="30"
@@ -18,6 +17,7 @@ const EditFormSubcomponent = ({ values, errors, touched, handleChange }) => {
         value={values.textarea}
         onChange={handleChange}
       />
+      {touched.textarea && errors.textarea && <p>{errors.textarea}</p>}
       <button type="submit">Submit</button>
     </Form>
   );

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Loading from "./Loading";
 import { connect } from "react-redux";
 import EditFormSubcomponent from "./EditFormSubcomponent";
+import "./EditForm.scss";
 
 class EditForm extends Component {
   render() {
