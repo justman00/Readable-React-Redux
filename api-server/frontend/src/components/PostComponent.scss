@@ -1,18 +1,23 @@
 .container-form {
-  max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
   padding: 2.5%;
   border: 2px solid black;
+  background: url("../imgs/img-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
 
   h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     margin: 0 auto 5%;
     text-align: center;
+    font-family: sans-serif;
   }
 
   div p {
-    font-size: 1.4rem;
-    color: red;
+    font-size: 1.7rem;
+    color: ivory;
     margin-top: 15px;
   }
 
@@ -24,15 +29,18 @@
   }
 
   input {
-    font-size: 1.8rem;
-    padding: 10px;
+    font-size: 2rem;
+    padding: 15px;
+    background: transparent;
+    border-radius: 10px;
     border: 0;
     outline: none;
-    border-bottom: 2px solid blueviolet;
+    border: 2px solid deeppink;
+    color: ivory;
 
     &::placeholder {
       opacity: 0.5;
-      color: blueviolet;
+      color: deeppink;
     }
   }
 
@@ -49,6 +57,7 @@
   .author {
     display: flex;
     flex-direction: column-reverse;
+    width: 30%;
   }
 
   .main-text {
@@ -70,12 +79,13 @@
         padding: 10px;
         font-size: 1.6rem;
         outline: none;
-        border: 0;
-        border-top: 2px solid rgba(green, 0.5);
-        border-right: 2px solid rgba(green, 0.5);
+        border: 2px solid deeppink;
+        background: transparent;
+        color: ivory;
+        border-radius: 10px;
 
         &::placeholder {
-          color: green;
+          color: deeppink;
           opacity: 0.5;
         }
       }
@@ -87,8 +97,8 @@
         font-size: 2.4rem;
         margin-bottom: 8%;
         padding-bottom: 2%;
-        border-bottom: 2px solid blueviolet;
-        width: 35%;
+        border-bottom: 2px solid deeppink;
+        width: 18%;
       }
 
       li {
@@ -100,7 +110,7 @@
   }
 
   .select-submit {
-    margin-top: 10%;
+    margin-top: 5%;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -120,11 +130,12 @@
         border: 0;
         font-size: 1.8rem;
         font-weight: 600;
-        color: blueviolet;
+        color: deeppink;
         outline: none;
         background: #fff;
         list-style-type: none;
         cursor: pointer;
+        background: transparent;
       }
     }
 
@@ -132,16 +143,17 @@
       outline: none;
       font-size: 1.8rem;
       font-weight: 600;
-      color: blueviolet;
+      color: deeppink;
       text-align: center;
-      border: 2px solid blueviolet;
+      border: 2px solid deeppink;
       border-radius: 50%;
       width: 90px;
       height: 90px;
       cursor: pointer;
+      background: transparent;
 
       &:hover {
-        background: blueviolet;
+        background: deeppink;
         color: white;
         transform: scale(1.15);
         transition: all 0.5s;

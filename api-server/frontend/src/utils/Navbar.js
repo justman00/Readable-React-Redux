@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <header className="header">
       <nav>
-        <div className="iconca">Iconca</div>
+        <div className="iconca">Readable</div>
         <div className="links">
           <Link to="#">Home</Link>
           <Link to="/">Explore</Link>
