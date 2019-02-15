@@ -2,6 +2,76 @@
   width: 70%;
   margin: 5% auto;
   font-size: 2rem;
+
+  h2 {
+    font-size: 3rem;
+    font-weight: 600;
+    font-family: sans-serif;
+    margin: 5%;
+    width: 90%;
+    text-align: center;
+    color: gray;
+
+    &:hover {
+      transform: scale(1.5);
+      transition: all 0.5s;
+    }
+  }
+
+  .comment-form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      margin: 2% 0;
+      color: red;
+    }
+
+    input {
+      outline: none;
+      // width: 30%;
+      padding: 15px;
+      background: transparent;
+      color: white;
+      border: 1px solid deeppink;
+      border-radius: 15px;
+      // border-bottom: 2px solid white;
+      font-size: 2rem;
+
+      &::placeholder {
+        font-size: 2rem;
+      }
+    }
+
+    .author {
+      width: 25%;
+    }
+
+    .body {
+      margin-top: 1%;
+      width: 65%;
+      display: flex;
+      justify-content: space-between;
+      input {
+        width: 70%;
+      }
+
+      button {
+        // width: 20%;
+        outline: none;
+        cursor: pointer;
+        font-size: 2.4rem;
+        padding: 10px 15px;
+        border: 1px solid deeppink;
+        background: transparent;
+        border-radius: 15px;
+        color: deeppink;
+      }
+    }
+  }
 }
 .block {
   display: block;

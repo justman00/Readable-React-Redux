@@ -8,12 +8,21 @@ import "./Comment.scss";
 
 const CommentForm = ({ touched, errors }) => {
   return (
-    <Form>
+    <Form className="comment-form">
+      <Field
+        className="author"
+        type="text"
+        placeholder="Your name"
+        name="author"
+      />
       {touched.author && errors.author && <p>{errors.author}</p>}
-      <Field type="text" placeholder="Your name" name="author" />
+
+      <div className="body">
+        <Field type="text" placeholder="Your comment" name="body" />
+
+        <button type="submit">Submit</button>
+      </div>
       {touched.body && errors.body && <p>{errors.body}</p>}
-      <Field type="text" placeholder="Your comment" name="body" />
-      <button type="submit">Submit</button>
     </Form>
   );
 };

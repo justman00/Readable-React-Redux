@@ -35,8 +35,8 @@ class Comments extends React.Component {
             />
           </div>
         ) : (
-          <div>
-            <h2>No Comments for this post yet</h2>
+          <div className="comments">
+            <h2>No Comments</h2>
             <CommentForm
               rerender={this.rerender}
               parentId={this.props.parentId}

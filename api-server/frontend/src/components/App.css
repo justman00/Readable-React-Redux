@@ -154,19 +154,19 @@ body {
 }
 
 .category {
-  width: 30%;
+  width: 33%;
   margin-top: 2%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
   border-right: 3px solid maroon;
-  padding-right: 4%;
+  padding-right: 2%;
+  padding-left: 2%;
 }
 
 .category:last-child {
   border: 0;
-  padding-right: 0;
 }
 
 .cards {
