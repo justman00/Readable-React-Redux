@@ -19,7 +19,9 @@ const Like = ({ id, rerender, voteScore, rate }) => {
 
 Like.propTypes = {
   id: PropTypes.string.isRequired,
-  rerender: PropTypes.func.isRequired
+  rerender: PropTypes.func.isRequired,
+  rate: PropTypes.func.isRequired,
+  voteScore: PropTypes.string.isRequired
 };
 
 export default Like;

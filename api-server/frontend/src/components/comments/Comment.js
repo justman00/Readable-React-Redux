@@ -21,7 +21,7 @@ class Comment extends React.Component {
   render() {
     return (
       <div className="comment-container">
-        <header>
+        <header class="header-comment">
           <h1>{this.props.comment.author}</h1>
           <h3>{this.props.comment.timestamp}</h3>
         </header>
@@ -38,30 +38,35 @@ class Comment extends React.Component {
         <p className={`comment-body ${this.state.displayP}`}>
           {this.props.comment.body}
         </p>
-        <button
-          onClick={() => {
-            deleteComment(this.props.id).then(() => this.props.rerender());
-          }}
-        >
-          Delete
-        </button>
-        <button
-          className={this.state.displayP}
-          onClick={() =>
-            this.setState({
-              displayF: "block",
-              displayP: "none"
-            })
-          }
-        >
-          Edit
-        </button>
-        <Like
-          id={this.props.id}
-          rerender={this.props.rerender}
-          rate={this.props.rateComment}
-          voteScore={this.props.voteScore}
-        />
+        <div className="comment-footer">
+          <div className="comment-footer-buttons">
+            <button
+              onClick={() => {
+                deleteComment(this.props.id).then(() => this.props.rerender());
+              }}
+            >
+              Delete
+            </button>
+            <button
+              className={this.state.displayP}
+              onClick={() =>
+                this.setState({
+                  displayF: "block",
+                  displayP: "none"
+                })
+              }
+            >
+              Edit
+            </button>
+          </div>
+
+          <Like
+            id={this.props.id}
+            rerender={this.props.rerender}
+            rate={rateComment}
+            voteScore={this.props.voteScore}
+          />
+        </div>
       </div>
     );
   }

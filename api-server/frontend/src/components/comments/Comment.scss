@@ -69,14 +69,101 @@
         background: transparent;
         border-radius: 15px;
         color: deeppink;
+
+        &:hover {
+          transform: scale(1.25);
+
+          transition: all 0.5s;
+        }
       }
     }
   }
 }
 .block {
   display: block;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  form {
+    width: 45%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    input {
+      font-size: 2rem;
+      width: 80%;
+
+      background: transparent;
+      padding: 15px;
+      border: 1px solid deeppink;
+      border-radius: 15px;
+      color: #fff;
+    }
+    button {
+      outline: none;
+      cursor: pointer;
+      background: transparent;
+      font-size: 2rem;
+      padding: 10px 15px;
+      border: 1px solid deeppink;
+      color: deeppink;
+      border-radius: 15px;
+    }
+  }
 }
 
 .none {
   display: none;
+}
+
+.comment-container {
+  margin-bottom: 5%;
+  border: 1px solid white;
+
+  display: flex;
+  flex-direction: column;
+
+  .header-comment {
+    width: 100%;
+    display: flex;
+    flex-direction: space-between;
+    padding: 3%;
+    margin: 0;
+    h1 {
+      font-size: 3rem;
+    }
+  }
+
+  .comment-body {
+    min-height: 50px;
+    text-align: center;
+  }
+
+  .comment-footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 1% 5%;
+
+    &-buttons {
+      width: 20%;
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        outline: none;
+        cursor: pointer;
+        background: transparent;
+        font-size: 2rem;
+        padding: 10px 15px;
+        border: 1px solid deeppink;
+        color: deeppink;
+        border-radius: 15px;
+        margin-right: 10%;
+      }
+    }
+  }
 }
