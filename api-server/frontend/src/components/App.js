@@ -15,11 +15,11 @@ class App extends Component {
         <Navbar />
         <Route exact path="/" component={Categories} />
 
-        <Route path={`/detail`} component={SinglePost} />
+        <Route path={`/detail/:id`} component={SinglePost} />
 
         <Route path={"/form"} component={PostForm} />
 
-        <Route path={"/edit"} component={EditForm} />
+        <Route path={"/edit/:id"} component={EditForm} />
       </div>
     );
   }

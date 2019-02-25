@@ -15,7 +15,12 @@ class Comments extends React.Component {
     this.setState({ render: !this.state.render });
   };
 
+  componentDidMount() {
+    this.props.rerenderComments(this.props.parentId);
+  }
+
   render() {
+    console.log(this.props.comments);
     return (
       <div>
         {this.props.comments.length > 0 ? (

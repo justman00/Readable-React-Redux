@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { deletePost, selectPost, ratePost } from "../actions";
 import { Link } from "react-router-dom";
@@ -9,6 +9,12 @@ import Loading from "./Loading.js";
 import "./SinglePost.scss";
 
 const SinglePost = props => {
+  const [post, setPost] = useState({});
+
+  useEffect(() => {
+    props.rerenderPost(props.match.params.id);
+  }, []);
+
   return (
     <div className="container">
       {props.post !== null ? (
@@ -45,7 +51,7 @@ const SinglePost = props => {
               </Link>
             </div>
           </main>
-          <Comments parentId={props.post.id} />
+          <Comments parentId={props.match.params.id} />
         </article>
       ) : (
         <div className="loading-icon">

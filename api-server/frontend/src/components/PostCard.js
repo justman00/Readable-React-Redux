@@ -18,10 +18,10 @@ const PostCard = props => {
           <Link
             onClick={e => {
               //   e.preventDefault();
-              props.clickPost(props.post.id);
+              // props.clickPost(props.post.id);
               props.getAllComments(props.post.id);
             }}
-            to={`/detail`}
+            to={`/detail/${props.post.id}`}
           >
             Find more
           </Link>

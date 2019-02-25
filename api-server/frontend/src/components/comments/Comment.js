@@ -21,7 +21,7 @@ class Comment extends React.Component {
   render() {
     return (
       <div className="comment-container">
-        <header class="header-comment">
+        <header className="header-comment">
           <h1>{this.props.comment.author}</h1>
           <h3>{this.props.comment.timestamp}</h3>
         </header>
